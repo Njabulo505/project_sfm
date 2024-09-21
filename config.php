@@ -1,5 +1,5 @@
 <?php
-// $con=new mysqli("localhost","root","","mikateka")
+
 $servername = "localhost";
 $username = "root";
 $password = "";
