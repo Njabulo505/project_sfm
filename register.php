@@ -211,7 +211,7 @@ a:hover {
 
 <div class="form-container">
         <div class="title">
-            <a href="home.php"><img src="image/sfm_logo class="img" alt=""></a>
+            <a href="home.php"><img src="image/sfm_logo.jpg" class="img" alt=""></a>
             <h3>Register Now</h3>
             <p>SoundFusionMedia</p>
         </div>
