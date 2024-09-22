@@ -149,7 +149,7 @@ a:hover {
 <body>
     <div class="form-container">
         <div class="title">
-            <a href="home.php"><img src="image/sfm_logo class="img" alt=""></a>
+            <a href="home.php"><img src="image/sfm_logo" class="img" alt=""></a>
             <h3>Login Now</h3>
             <p>SoundFusionMedia</p>
         </div>
