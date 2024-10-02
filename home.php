@@ -3,7 +3,7 @@ session_start();
 include('config.php'); // Make sure this file includes the connection to the database
 
 // Fetch recently added products
-$stmt = $conn->prepare('SELECT * FROM products ORDER BY updated_at DESC LIMIT 4');
+$stmt = $conn->prepare('SELECT * FROM products ORDER BY date_added DESC LIMIT 4');
 $stmt->execute();
 $recently_added_products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
@@ -57,10 +57,13 @@ $featured_products = $stmtFeatured->get_result()->fetch_all(MYSQLI_ASSOC);
     <div class="products">
         <?php foreach ($featured_products as $product): ?>
             <a href="index.php?page=product&id=<?= $product['id'] ?>" class="product">
-                <img src="imgs/<?= htmlspecialchars($product['image_url']) ?>" width="200" height="200" alt="<?= htmlspecialchars($product['name']) ?>">
-                <span class="name"><?= htmlspecialchars($product['name']) ?></span>
+                <img src="imgs/<?= $product['img'] ?>" width="200" height="200" alt="<?= htmlspecialchars($product['title']) ?>">
+                <span class="name"><?= htmlspecialchars($product['title']) ?></span>
                 <span class="price">
                     &dollar;<?= number_format($product['price'], 2) ?>
+                    <?php if ($product['rrp'] > 0): ?>
+                        <span class="rrp">&#82;<?= number_format($product['rrp'], 2) ?></span>
+                    <?php endif; ?>
                 </span>
             </a>
         <?php endforeach; ?>
@@ -73,10 +76,13 @@ $featured_products = $stmtFeatured->get_result()->fetch_all(MYSQLI_ASSOC);
     <div class="products">
         <?php foreach ($recently_added_products as $product): ?>
             <a href="index.php?page=product&id=<?= $product['id'] ?>" class="product">
-                <img src="imgs/<?= htmlspecialchars($product['image_url']) ?>" width="200" height="200" alt="<?= htmlspecialchars($product['name']) ?>">
-                <span class="name"><?= htmlspecialchars($product['name']) ?></span>
+                <img src="imgs/<?= $product['img'] ?>" width="200" height="200" alt="<?= htmlspecialchars($product['title']) ?>">
+                <span class="name"><?= htmlspecialchars($product['title']) ?></span>
                 <span class="price">
                     &dollar;<?= number_format($product['price'], 2) ?>
+                    <?php if ($product['rrp'] > 0): ?>
+                        <span class="rrp">&#82;<?= number_format($product['rrp'], 2) ?></span>
+                    <?php endif; ?>
                 </span>
             </a>
         <?php endforeach; ?>
